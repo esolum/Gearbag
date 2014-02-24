@@ -12,7 +12,7 @@ requires:
 - Class.Options
 - Class.Events
 
-provides: [MooSQL]
+provides: [MooSQL] 
 
 ...
 */
