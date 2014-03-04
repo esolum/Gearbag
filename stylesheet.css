@@ -1,46 +1,152 @@
-a {
-	text-decoration: none;
+@font-face
+{
+font-family: Proxima Nova Regular;
+src: url(ProximaNova-Regular.otf);
 }
+
 body {
     font-family: 'Open Sans', Helvetica, sans-serif;
-    background-image: url('gplaypattern.png');
     background-color: #EEEEEE;
-    margin-top: 0px;
-    margin-left: 0px;
-    margin-right: 0px;
+    margin: 0 0 0 0px;
+    padding: 0 0 24px;
+	padding-top: 0px;
+	padding-right: 0px;
+	padding-bottom: 24px;
+	padding-left: 0px;
+	height: 1000px;
+
+}
+#main {
+	margin-top: 0px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 0px;
 }
 
 #page {
 	background-color: white;
-    height: 90%;
-    width: 90%;
+    width: 941px;
+	padding: 0 20px 20px 20px;
+    margin-top: 25px;
+    box-shadow: 0 0 6px #ccc;
+    text-align: left;
+	overflow: hidden;
+	position: relative;
     margin-left: 5%;
-    margin-top: 1%;
-    display: inline-block;
-    box-shadow: 0px 0px 10px 3px DarkGray;
+    height: 900px;
+    
+    
 }
 
 #nav-bar{
-	width: 100%;
-	height: 70px;
 	background: white;
-	font-family: 'Montserrat', sans-serif;
+	font-family: 'Proxima Nova Regular', sans-serif;
+	height: auto;
+	width: 100%;
+	margin-bottom: 0px;
 	display: inline-block;
-	margin-top: 0px;
-	margin-right: auto;
-	margin-bottom: 24px;
-	margin-left: auto;
 	box-shadow: 0 0 10px rgba(0,0,0,0.1);
+	position: relative;
+	z-index: 11;
+	padding-left: 39px;
+	
+	
+	
+	
+	
+	
 }
-#nav-bar a {
-	margin-left: 7%;
+#nav-bar a{
+	transition: border-color .2s linear;
+	border-top-width: 3px;
+	border-top-style: solid;
+	border-top-color: rgb(255, 255, 255);
+	text-decoration: none;
+	color: #333;
 	font-size: 16px;
+	
+	
+	display: inline-block;
+	text-align: center;
+	cursor: pointer;
+	box-sizing: border-box;
+	height: 70px;
+	padding-top: 24px;
+	padding-right: 34px;
+	
+	padding-left: 35px;
+	
+}
+
+#nav-bar a.guides:hover {
+	
+	border-top: 3px solid blue;
+}
+#nav-bar a.answers:hover {
+	
+	border-top: 3px solid green;
+}
+#nav-bar a.store:hover {
+	
+	border-top: 3px solid red;
+}
+
+.logo{
+	display: inline-block;
+	width: 125px;
+	height: 37px;
+	background: url(https://d1luk0418egahw.cloudfront.net/static/images/home/IFIXIT-logo.png) no-repeat center;
+	margin-top: 16px;
+	margin-left: 79px;
+	position: absolute;
+	cursor: pointer;
+}
+#content {
+	width: 593px;
+	
+}
+
+#sidebarFloat {
+	float: right;
+	display: block;
+	/*padding-left: 50px; */
+	
+}
+#sidebar {
+	width: 316px;
+	margin-top: 24px;
+	padding
+	background-color: #fafafa;
+	height: 500px;
+	border-left: 1px solid #c1c1c1;
+	border-right: 1px solid #c1c1c1;
+	border-bottom: 1px solid #c1c1c1;
+	
+}
+
+#sidebar h4 {
+	width: 291px;
+	border: 1px solid #c1c1c1;
+	position: relative;
+	margin-left: -1px;
+	font-weight: 600;
+	font-size: 120%;
+	background-color: #fff;
+	line-height: 1.2em;
+	margin-bottom: 2px;
+	padding-left: 1.33em;
+	padding-top: 8px;
+	
+	padding-bottom: 8px;
+	font-weight: 600;
+	background-image: linear-gradient(to bottom,#f1f1f1,#e1e1e1);
 }
 
 #page h1 {
 	font-weight: bold;
-	font-size: 3em;
+	font-size: 2.2em;
 	margin: 3px;
+	margin-top: 24px;
 }
 #page p {
 	font-weight: normal;
@@ -48,8 +154,9 @@ body {
 }
 .device-box{
 	display: inline-block;
-	width: 100px;
-	height: 100px;
-	outline: black solid thick;
+	width: 125px;
+	height: 125px;
+	outline: black solid thin;
+	margin: 3px;
 	
 }
