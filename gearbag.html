@@ -3,45 +3,83 @@
 		<title> My GearBag </title>
 		<link rel="stylesheet" type="text/css" href="stylesheet.css">
 		<link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+		
+		<script type="text/javascript" src="mootools-core.js"></script>
+		<script type="text/javascript" src="mootools-more.js"></script>
 		<script type="text/javascript" src="moosql.js"></script>
 		<script type="text/javascript">
-			
+			var sqlDB = new MooSQL({
+        	//Database name
+        	dbName:'Gearbag',
+        	
+        	//Database version (max 4 numbers seperated by dots)
+        	dbVersion:'1.0',
+        
+        	//Database description (officially database display name)
+        	dbDesc:'This is a gearbag database',
+        	
+        	//Estimated size
+        	dbSize:20*100
+    		});
+	
+	
 		</script>
 	</head>
 	<body>
 		<div id="nav-bar">
-			<a href="http://www.ifixit.com/Guide">Guides</a>
-			<a href="http://www.ifixit.com/Answers">Answers</a> 
-			<a href="http://www.ifixit.com/Store">Store</a>
-			<a href="http://www.ifixit.com/">Logo</a>
-			<a href=/Search>Search</a>
-			<a href=/Language>Language</a>
-			<a href=/User>User</a>
-			
+			<a href="http://www.ifixit.com/Guide" class="guides"> Guides </a>
+			<a href="http://www.ifixit.com/Answers" class="answers"> Answers </a> 
+			<a href="http://www.ifixit.com/Store" class="store"> Store </a>
+			<div id="headerLogo" class="logo"> </div>
 		</div>
-		<div id="page">
-			<h1> Devices </h1>
-			<p> Click on the devices you own and drag them over to your gearbag in the
-				sidebar. 
-			</p>
-			<div class="container">
-				<div id="devices">
-					<table>
-						<tr>
-							<td class="device-box">
-							<td class="device-box">
-							<td class="device-box">
-						<tr>
-							<td class="device-box">
-							<td class="device-box">
-							<td class="device-box">
-						<tr>
-							<td class="device-box">
-							<td class="device-box">
-							<td class="device-box">
-				</div>
-			</div>
+		
+		
+		<div id="main">
 			
+			<div id="page">
+				<div id="sidebarFloat">
+					<div id="sidebar">
+						<h4> Gearbag </h4>
+						<div id="myDevices"> </div>
+					</div>
+				</div>
+				<div id="content">
+					<h1> Devices </h1>
+					<p> Click on the devices you own and drag them over to your gearbag in the
+					sidebar. 
+					</p>
+					<div class="container">
+						<div id="devices">
+							<table>
+								<tr>
+									<td class="device-box">
+									<td class="device-box">
+									<td class="device-box">
+									<td class="device-box">
+									<td class="device-box">
+								<tr>
+									<td class="device-box">
+									<td class="device-box">
+									<td class="device-box">
+									<td class="device-box">
+									<td class="device-box">
+								<tr>
+									<td class="device-box">
+									<td class="device-box">
+									<td class="device-box">
+									<td class="device-box">
+									<td class="device-box">
+								<tr>
+									<td class="device-box">
+									<td class="device-box">
+									<td class="device-box">
+									<td class="device-box">
+									<td class="device-box">
+						</div>
+					</div>
+				</div>
+				
+			</div>
 		</div>
 	</body>
 	
