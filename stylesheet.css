@@ -25,14 +25,14 @@ body {
 
 #page {
 	background-color: white;
-    width: 941px;
+    width: 981px;
 	padding: 0 20px 20px 20px;
     margin-top: 25px;
     box-shadow: 0 0 6px #ccc;
     text-align: left;
 	overflow: hidden;
 	position: relative;
-    margin-left: 5%;
+	margin: 0 auto;
     height: 900px;
     
     
@@ -43,17 +43,12 @@ body {
 	font-family: 'Proxima Nova Regular', sans-serif;
 	height: auto;
 	width: 100%;
-	margin-bottom: 0px;
+	margin-bottom: 24px;
 	display: inline-block;
 	box-shadow: 0 0 10px rgba(0,0,0,0.1);
 	position: relative;
 	z-index: 11;
-	padding-left: 39px;
-	
-	
-	
-	
-	
+	padding-left: 35px;
 	
 }
 #nav-bar a{
@@ -102,8 +97,7 @@ body {
 	cursor: pointer;
 }
 #content {
-	width: 593px;
-	
+	width: 593px;	
 }
 
 #sidebarFloat {
@@ -115,7 +109,6 @@ body {
 #sidebar {
 	width: 316px;
 	margin-top: 24px;
-	padding
 	background-color: #fafafa;
 	height: 800px;
 	border-left: 1px solid #c1c1c1;
@@ -152,11 +145,53 @@ body {
 	font-weight: normal;
 	font-size: 1.2em;
 }
-.device-box{
+#devices {
 	display: inline-block;
-	width: 125px;
-	height: 125px;
-	outline: black solid thin;
+	height: 500px;
+	width: 100%;
+}
+
+img {
+	margin: 3px;
+}
+.device-column{
+	display: inline-block;
+	
+	width: 100px;
+	height: 450px;
 	margin: 3px;
 	
+}
+#container {
+	display: inline-block;
+	width: 583px;
+	height: 494px;
+	border: 2px solid #c1c1c1;
+	background:linear-gradient(to bottom, #f1f1f1 , #e1e1e1);
+	padding: 10px;
+	box-shadow: 0px 0px 30px 10px darkGray inset;
+}
+
+#buttons {
+	margin-top: 10px;
+	background-color: red;
+	display: block;
+	padding-left: 15px;
+	font-size: 12px;
+	text-align: center;
+}
+#previous, #next {
+	display: inline-block;
+	width: 80px;
+	height: 30px;
+	margin: 5px;
+	background-color: lightGray;
+	border-radius: 5px;
+}
+
+#previous {
+	float: left;
+}
+#next {
+	float: right;
 }
