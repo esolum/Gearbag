@@ -4,7 +4,7 @@
 {
 	var offset = 0;
     var limit = 20;
-    var data;
+    var data; 
     
     var devNames = new Array();
 	var sqlDB = new MooSQL({
