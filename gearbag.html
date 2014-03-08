@@ -3,7 +3,7 @@
 		<title> My GearBag </title>
 		<link rel="stylesheet" type="text/css" href="stylesheet.css">
 		<script type="text/javascript" src="mootools-core.js"></script>
-		<script type="text/javascript" src="mootools-more.js"></script>
+		<script type="text/javascript" src="mootools-more-1.4.0.1.js"></script>
 		<script type="text/javascript" src="moosql.js"></script>
 		<script type="text/javascript" src="functionality.js"></script>
 		<script type="text/javascript">
@@ -50,22 +50,21 @@
 					sidebar. 
 					</p>
 					<div id="container">
+						<div id="name-bar">
+							<!-- <div id="name"></div> -->
+						</div>
 						<div id="devices">
-							<div id="column1" class="device-column"></div>
-							<div id="column2" class="device-column"></div>
-							<div id="column3" class="device-column"></div>
-							<div id="column4" class="device-column"></div>
-							<div id="column5" class="device-column"></div>
+							
 						</div>
+						
 					</div>
-					<div id="buttons">
-						<div id="previous"> 
-							<p> Previous </p>
-						</div>
-						<div id="next">
-							<p> Next </p>
-						</div>
+					<div id="rangeBar"></div>
+					<div id="buttons"> 
+						
+						<button type="button" id="previous" onClick="prevDevices()">Previous</button>
+						<button type="button" id="next" onClick="nextDevices()">Next</button>
 					</div>
+					
 					
 				</div>
 				
