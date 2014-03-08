@@ -13,7 +13,7 @@ body {
 	padding-right: 0px;
 	padding-bottom: 24px;
 	padding-left: 0px;
-	height: 1000px;
+	height: 1200px;
 
 }
 #main {
@@ -26,14 +26,15 @@ body {
 #page {
 	background-color: white;
     width: 981px;
-	padding: 0 20px 20px 20px;
+	padding: 0 30px 30px 30px;
     margin-top: 25px;
     box-shadow: 0 0 6px #ccc;
     text-align: left;
 	overflow: hidden;
 	position: relative;
 	margin: 0 auto;
-    height: 900px;
+    height: 1000px;
+    font-size: 80%;
     
     
 }
@@ -97,7 +98,9 @@ body {
 	cursor: pointer;
 }
 #content {
-	width: 593px;	
+	width: 593px;
+	height: 600px;
+		
 }
 
 #sidebarFloat {
@@ -147,51 +150,103 @@ body {
 }
 #devices {
 	display: inline-block;
-	height: 500px;
-	width: 100%;
+	height: 425px;
+	width: 575px;
+	overflow: auto;
+	padding-left: 13px;
+	
+	
 }
 
 img {
 	margin: 3px;
+	display: inline;
+	cursor: pointer;
 }
-.device-column{
-	display: inline-block;
-	
-	width: 100px;
-	height: 450px;
-	margin: 3px;
-	
+
+#devices img {
+	margin-right: 15px;
+	width: 96px;
+	height: 72px;
 }
+
 #container {
 	display: inline-block;
 	width: 583px;
-	height: 494px;
+	height: 504px;
 	border: 2px solid #c1c1c1;
-	background:linear-gradient(to bottom, #f1f1f1 , #e1e1e1);
+	background: radial-gradient(#f1f1f1 , #e1e1e1);
 	padding: 10px;
 	box-shadow: 0px 0px 30px 10px darkGray inset;
 }
+#name-bar {
+ 	display: block;
+ 	height: 40px;
+ 	background-color: #fafafa;
+ 	text-align: center;
+ 	margin-left: 15px;
+ 	margin-bottom: 10px;
+ 	margin-right: 15px;
+ 	margin-top: 10px;
+ 	padding-top: 20px;
+ 	font-size: 14px;
+}
+#name {
+	margin: 0px;
+	
+}
 
 #buttons {
-	margin-top: 10px;
-	background-color: red;
 	display: block;
-	padding-left: 15px;
-	font-size: 12px;
-	text-align: center;
-}
-#previous, #next {
-	display: inline-block;
-	width: 80px;
-	height: 30px;
-	margin: 5px;
-	background-color: lightGray;
-	border-radius: 5px;
 }
 
-#previous {
+#previous, #next {
+	display: inline-block;
+	
+	height: 40px;
+	width: 90px;
+	border-radius: 5px;
+	margin-left: 15px;
+	margin-top: 10px;
+	cursor: pointer;
+	background-color: #f1f1f1;
+}
+#previous{
 	float: left;
 }
-#next {
+#next{
 	float: right;
 }
+
+#rangeBar {
+	display: block;
+	margin-top: 10px;
+	height: 30px;
+	margin-left: 15px;
+}
+#range {
+	margin: 0px;
+	margin-top: 3px;
+	text-align: center;
+	margin-bottom: 0px;
+	
+}
+
+#myDevices {
+	height: 95%;
+	/*display: inline; */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
