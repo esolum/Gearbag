@@ -14,8 +14,8 @@ body {
 	padding-bottom: 24px;
 	padding-left: 0px;
 	height: 1200px;
-
 }
+
 #main {
 	margin-top: 0px;
 	margin-left: auto;
@@ -34,9 +34,7 @@ body {
 	position: relative;
 	margin: 0 auto;
     height: 1000px;
-    font-size: 80%;
-    
-    
+    font-size: 80%;   
 }
 
 #nav-bar{
@@ -49,9 +47,9 @@ body {
 	box-shadow: 0 0 10px rgba(0,0,0,0.1);
 	position: relative;
 	z-index: 11;
-	padding-left: 35px;
-	
+	padding-left: 35px;	
 }
+
 #nav-bar a{
 	transition: border-color .2s linear;
 	border-top-width: 3px;
@@ -60,28 +58,26 @@ body {
 	text-decoration: none;
 	color: #333;
 	font-size: 16px;
-	
-	
 	display: inline-block;
 	text-align: center;
 	cursor: pointer;
 	box-sizing: border-box;
 	height: 70px;
 	padding-top: 24px;
-	padding-right: 34px;
-	
-	padding-left: 35px;
-	
+	padding-right: 34px;	
+	padding-left: 35px;	
 }
 
 #nav-bar a.guides:hover {
 	
 	border-top: 3px solid blue;
 }
+
 #nav-bar a.answers:hover {
 	
 	border-top: 3px solid green;
 }
+
 #nav-bar a.store:hover {
 	
 	border-top: 3px solid red;
@@ -97,31 +93,30 @@ body {
 	position: absolute;
 	cursor: pointer;
 }
+
 #content {
 	width: 593px;
-	height: 600px;
-		
+	height: 600px;	
 }
 
 #sidebarFloat {
 	float: right;
 	display: block;
-	/*padding-left: 50px; */
-	
 }
+
 #sidebar {
 	width: 316px;
 	margin-top: 24px;
 	background-color: #fafafa;
-	height: 800px;
-	border-left: 1px solid #c1c1c1;
-	border-right: 1px solid #c1c1c1;
-	border-bottom: 1px solid #c1c1c1;
-	
+	height: 700px;
+	border-left: 2px solid #c1c1c1;
+	border-right: 2px solid #c1c1c1;
+	border-bottom: 2px solid #c1c1c1;
+	overflow: scroll;	
 }
 
 #sidebar h4 {
-	width: 291px;
+	width: 316px;
 	border: 1px solid #c1c1c1;
 	position: relative;
 	margin-left: -1px;
@@ -130,12 +125,13 @@ body {
 	background-color: #fff;
 	line-height: 1.2em;
 	margin-bottom: 2px;
-	padding-left: 1.33em;
 	padding-top: 8px;
-	
+	text-align: center;
 	padding-bottom: 8px;
 	font-weight: 600;
 	background-image: linear-gradient(to bottom,#f1f1f1,#e1e1e1);
+	border-top: 2px solid #c1c1c1;
+	margin-bottom: 10px;
 }
 
 #page h1 {
@@ -148,14 +144,13 @@ body {
 	font-weight: normal;
 	font-size: 1.2em;
 }
+
 #devices {
 	display: inline-block;
 	height: 425px;
 	width: 575px;
 	overflow: auto;
-	padding-left: 13px;
-	
-	
+	padding-left: 13px;	
 }
 
 img {
@@ -165,9 +160,17 @@ img {
 }
 
 #devices img {
-	margin-right: 15px;
+	margin-right: 12px;
 	width: 96px;
 	height: 72px;
+	border: 1px solid black;
+}
+
+#myDevices img {
+	margin-left: 11.5px;
+	width: 86px;
+	height: 62px;
+	border: 1px solid black;
 }
 
 #container {
@@ -190,10 +193,10 @@ img {
  	margin-top: 10px;
  	padding-top: 20px;
  	font-size: 14px;
+ 	border: 1px solid black;
 }
 #name {
-	margin: 0px;
-	
+	margin: 0px;	
 }
 
 #buttons {
@@ -201,8 +204,7 @@ img {
 }
 
 #previous, #next {
-	display: inline-block;
-	
+	display: inline-block;	
 	height: 40px;
 	width: 90px;
 	border-radius: 5px;
@@ -211,9 +213,11 @@ img {
 	cursor: pointer;
 	background-color: #f1f1f1;
 }
+
 #previous{
 	float: left;
 }
+
 #next{
 	float: right;
 }
@@ -224,17 +228,16 @@ img {
 	height: 30px;
 	margin-left: 15px;
 }
+
 #range {
 	margin: 0px;
 	margin-top: 3px;
 	text-align: center;
-	margin-bottom: 0px;
-	
+	margin-bottom: 0px;	
 }
 
 #myDevices {
 	height: 95%;
-	/*display: inline; */
 }
 
 
