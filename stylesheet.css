@@ -25,10 +25,10 @@ body {
 
 #page {
 	background-color: white;
-    	width: 981px;
+	width: 981px;
 	padding: 0 30px 30px 30px;
     	margin-top: 25px;
-	box-shadow: 0 0 6px #ccc;
+    	box-shadow: 0 0 6px #ccc;
     	text-align: left;
 	overflow: hidden;
 	position: relative;
@@ -236,7 +236,8 @@ img {
 }
 
 #myDevices {
-	height: 645px;
+	height: 600px;
+	margin-bottom: 10px;
 	overflow: scroll;
 }
 
@@ -245,6 +246,31 @@ img {
 	height: 10px;
 	background-color: black;*/
 	border: 1px solid yellow;
+}
+
+#display-bar {
+	width: 100%;
+	display: inline-block;
+	height:40px;
+	border-top: 2px solid #c1c1c1;
+	background-image: linear-gradient(to bottom,#f1f1f1,#e1e1e1);
+}
+
+#iconDisplay{
+	display: inline-block;
+	margin-left: 50px;
+	width: 40px;
+	height:40px;
+	border: 1px solid black;
+}
+
+#listDisplay{
+	display: inline-block;
+	float:right;
+	margin-right: 50px;
+	width: 40px;
+	height:40px;
+	border: 1px solid black;
 }
 
 
