@@ -1,8 +1,8 @@
 /* All my javascript backend */
-/* Can't figure out the TypeMismatch Error problem */
+/* Everything works! */
 
 {
-    var offset = 0;
+	var offset = 0;
     var limit = 25;
     var data;
     var rangeBeg = 1;
@@ -28,12 +28,13 @@
     			sqlDB.addEvent('notSupported', function(){
     				console.log("Sorry, but the Gearbag feature does not work with your browser. Go download Chrome.");
     			});
-    			sqlDB.addEvent('databaseCreated', function(){
-    				alert('Created.');
-    			});
+    			
     			// add check function to see if table is created or not
     			checkDB();
     			loadDevices();
+    			sqlDB.addEvent('databaseCreated', function(){
+    				alert('Created.');
+    			});
     });
     
     function loadDevices(offset){
@@ -41,9 +42,7 @@
     	var devReq = new Request({
 			url: 'https://www.ifixit.com/api/2.0/categories/all?limit=' + limit + '&offset=' + offset,
 			callbackKey: 'reqInfo',
-			onRequest: function(url){
-			
-			},
+			onRequest: function(url){},
 			onFailure: function(){
 				console.log("Failed to complete request.");
 			},
@@ -64,7 +63,7 @@
 		var rangeDisplay = new Element('p');
 		var strRangeBeg = rangeBeg.toString();
 		var strRangeEnd = rangeEnd.toString();
-		rangeDisplay.textContent = 'Showing ' + strRangeBeg + '-' + strRangeEnd + ' out out of 2788';
+		rangeDisplay.textContent = 'Showing ' + strRangeBeg + '-' + strRangeEnd + ' out of 2788';
 		rangeDisplay.id = 'range';
 		rangeDisplay.inject('rangeBar');
 	}	
@@ -91,11 +90,12 @@
 				displayName.inject('name-bar');
 			}
 		});
+		
 		option.addEvent('mouseleave', function(){
 			var el = document.getElementById('name');
 			if(el!=null) el.destroy();
-
 		});	
+		
 		option.inject("devices");	
 	}
 	
@@ -113,9 +113,7 @@
 		var imageReq = new Request({
 			url: 'https://www.ifixit.com/api/2.0/categories/' + name,
 			callbackKey: 'reqInfo',
-			onRequest: function(url){
-			
-			},
+			onRequest: function(url){},
 			onComplete: function(data){
 				var imgTag;
 				var device = JSON.parse(data);
@@ -159,104 +157,93 @@
 		item.addEvent('mousedown', function(event){
 			event.stop();
 
-			// `this` refers to the element with the .item class
-			var myDevice = this;
-
-			//put the clone in the same place as the device to be injectes
-			var itemClone = myDevice.clone().setStyles(myDevice.getCoordinates()).setStyles({
+			//Enables you to drag a clone over without deleting the item in the Device List
+			var myDevice = this.clone().cloneEvents(this);
+			var itemClone = this.clone().setStyles(this.getCoordinates()).setStyles({
 				opacity: 0.8,
 				position: 'absolute'
 			}).inject(document.body);
 		
-	
+			/* Draggin' and Droppin' */
 			var myDrag = new Drag.Move(itemClone, {
  
     			droppables: document.getElementById('myDevices'),
  
     			onDrop: function(dragging, location){
-        			dragging.destroy();
+        			dragging.destroy(); // destroy the translucent clone
         			if (location != null){
-          				myDevice.inject(location);
-          		
           				if(location == document.getElementById('myDevices')){
-          					//insertDB(gear.innerText, gear.style.backgroundImage);
-          					console.log("Need to figure this out");
+          					insertNewDevice(name, myDevice.src);
+          					
           					//Destroy the connection that displays the name on rollover
           					var el = document.getElementById('name');
 							if(el != null) el.destroy();
           				}
-          				// if the destination is the items pane, remove it from the database
-          				if(location != document.getElementById('myDevices')){
-          					//removeDB(myDevice.innerText);
-          					console.log("Figure out what this does too.");
-          					//Destroy rollover name element
-          					var el = document.getElementById('name');
-							if(el != null) el.destroy();
-          				}
         			}
-        			else{ }
       			},
+      			
     			onCancel: function(dragging){
 					dragging.destroy();
 					var el = document.getElementById('name');
 					if(el != null) el.destroy();
 				}
 			});
-		myDrag.start(event);
+			myDrag.start(event);
 		});
 		
 	}
 	
 	/* SQL Storage */
+	
 	function checkDB(){
-		sqlDB.tableExists('gearbag', {run: function(transaction, result){
-			createTable();
-		}});
+
+    	sqlDB.tableExists('gearbag', function(transaction, result){
+			createTable(); // create gearbag if callback function is run
+		});
+		
+		//Display anything that was previously in the database
+    	sqlDB.exec("SELECT * FROM gearbag", function (transaction,result){
+    	  for(var i=0; i < result.rows.length; i++){
+		 	displayMyDevice(result.rows.item(i)['name'], result.rows.item(i)['img']);
+      	  } 
+    	});
 	}
 	
 	function createTable(){
-		sqlDB.create("CREATE TABLE gearbag(deviceName varchar(255), imgURL varchar(255))", callback.bindWithEvent());
-    }
-
-    //Callback function
-    function callback(transaction,result){
-       
-    }
+		// make the table if it's not there
+		sqlDB.exec("CREATE TABLE gearbag(name varchar(255), img varchar(255))", function(transaction, result){});
+	}	
 	
-	function dbInsert(device){
-		device.inject('myDevices');
-
-		//var insert = "INSERT INTO gearbag (deviceName, imgURL) VALUES (?, ?)";
-			
-		sqlDB.insert('gearbag', [device.name, device.imgTag], onError);
-			
+	function insertNewDevice(name, img){
+		sqlDB.exec("INSERT INTO gearbag (name, img) VALUES ('"+ name +"','"+ img +"')", function(transaction, result){});
+		displayMyDevice(name, img);
 	}
 	
-	function dbDelete(device){
-		var remove = "DELETE FROM gearbag WHERE deviceName=?";
-		sqlDB.transaction(function(tx) {
-			tx.executeSql(remove, [device.name], showRecords, onError);
-		});
+	function removeDevice(device){
+		// remove an item from the table
+		sqlDB.exec("DELETE FROM gearbag WHERE name='"+device+"'", function(transaction, result){});
+	}
+	
+	function displayMyDevice(name, imgTag){
+		// to make an item in the bag (from the database)
+		var option = new Element('img');
+		option.src = imgTag;
+		option.id = name;
+		option.margin = '10px';
+		option.class = 'device-box';
+		option.display = 'inline';
+		option.cursor = 'pointer';
 		
-	}
-	
-	
-	
-	function showRecords() {
-		var selectAllStatement = "SELECT * FROM gearbag "; 
-		results.innerHTML = '';
-		db.transaction(function(tx) {
-			tx.executeSql(selectAllStatement, [], function(tx, result) {
-				dataset = result.rows;
-				for (var i = 0, item = null; i < dataset.length; i++) {
-					item = dataset.item(i);
-					results.innerHTML += '<li>' + item['itemName'] + ' , ' + item['url'] + ' <a href="#" onclick="loadRecord('+i+')">edit</a>  ' + '<a href="#" onclick="deleteRecord('+item['id']+')">delete</a></li>';
-				}
-			});
+		/* Add Gearbag-specific device events */
+		
+		/* If the user clicks on a device in the Gearbag it will be deleted from the database */
+		option.addEvent('mousedown', function(){
+			removeDevice(name);
+			var el = document.getElementById(name);
+			el.destroy();
 		});
-	}
-	function onError(tx, error){
-		alert(error.message);
+
+		option.inject('myDevices');
 	}
 	
 	function emptyContainer(){
@@ -266,13 +253,6 @@
   		}
 	}
 }
-
-
-/* FUTURE STUFF */
-
-/*
-	Create the table that will store all the devices
-*/
 
 
 
