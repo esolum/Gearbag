@@ -1,7 +1,7 @@
 @font-face
 {
 font-family: Proxima Nova Regular;
-src: url(http://unix4.csc.calpoly.edu/home/esolum/www/ProximaNova-Light.otf);
+src: url(ProximaNova-Light.otf);
 }
 
 body {
@@ -112,7 +112,6 @@ body {
 	border-left: 2px solid #c1c1c1;
 	border-right: 2px solid #c1c1c1;
 	border-bottom: 2px solid #c1c1c1;
-	overflow: scroll;	
 }
 
 #sidebar h4 {
@@ -124,7 +123,7 @@ body {
 	font-size: 120%;
 	background-color: #fff;
 	line-height: 1.2em;
-	margin-bottom: 2px;
+	
 	padding-top: 8px;
 	text-align: center;
 	padding-bottom: 8px;
@@ -237,7 +236,17 @@ img {
 }
 
 #myDevices {
-	height: 95%;
+	height: 645px;
+	overflow: scroll;
+}
+
+.myDevice:hover{
+	/*width: 10px;
+	height: 10px;
+	background-color: black;*/
+	border: 1px solid yellow;
+   
+	
 }
 
 
