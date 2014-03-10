@@ -33,7 +33,7 @@
     			checkDB();
     			loadDevices();
     			sqlDB.addEvent('databaseCreated', function(){
-    				alert('Created.');
+    				
     			});
     });
     
