@@ -1,6 +1,5 @@
 /* All my javascript backend */
-/* Using API 0.1 because screw 2.0 its hard */
-/* Wait jk lol I win */
+/* Can't figure out why the TypeMistmatch Error keeps popping up with moosql.js */
 
 {
 	var offset = 0;
@@ -32,7 +31,8 @@
     			sqlDB.addEvent('databaseCreated', function(){
     				alert('Created.');
     			});
-    			
+    			// add check function to see if table is created or not
+    			checkDB();
     			loadDevices();
     });
     
@@ -207,10 +207,52 @@
 		
 	}
 	
-	function addItemToDB(item){
-		item.inject('myDevices');
-
+	/* SQL Storage */
+	function checkDB(){
+		sqlDB.tableExists('gearbag', {run: function(transaction, result){
+			createTable();
+		}});
+	}
 	
+	function createTable(){
+		sqlDB.exec("CREATE TABLE gearbag(deviceName varchar(255), imgURL varchar(255))", function(transaction, result){
+		});
+	}
+	
+	function dbInsert(device){
+		device.inject('myDevices');
+
+		//var insert = "INSERT INTO gearbag (deviceName, imgURL) VALUES (?, ?)";
+			
+		sqlDB.insert('gearbag', [device.name, device.imgTag], onError);
+			
+	}
+	
+	function dbDelete(device){
+		var remove = "DELETE FROM gearbag WHERE deviceName=?";
+		sqlDB.transaction(function(tx) {
+			tx.executeSql(remove, [device.name], showRecords, onError);
+		});
+		
+	}
+	
+	
+	
+	function showRecords() {
+		var selectAllStatement = "SELECT * FROM gearbag "; 
+		results.innerHTML = '';
+		db.transaction(function(tx) {
+			tx.executeSql(selectAllStatement, [], function(tx, result) {
+				dataset = result.rows;
+				for (var i = 0, item = null; i < dataset.length; i++) {
+					item = dataset.item(i);
+					results.innerHTML += '<li>' + item['itemName'] + ' , ' + item['url'] + ' <a href="#" onclick="loadRecord('+i+')">edit</a>  ' + '<a href="#" onclick="deleteRecord('+item['id']+')">delete</a></li>';
+				}
+			});
+		});
+	}
+	function onError(tx, error){
+		alert(error.message);
 	}
 	
 	function emptyContainer(){
@@ -227,7 +269,13 @@
 /*
 	Create the table that will store all the devices
 	Add each device to the table
+	
+	Implement Drag and Drop
 	Add a search element
+	Add hover events to say name of device on a bar above devices
+		Fire mouseenter and mouseleave to remove injection of name 
+	
+
 */
 
 
