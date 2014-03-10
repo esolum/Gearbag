@@ -1,8 +1,8 @@
 /* All my javascript backend */
-/* Can't figure out why the TypeMistmatch Error keeps popping up with moosql.js */
+/* Can't figure out the TypeMismatch Error problem */
 
 {
-	var offset = 0;
+    var offset = 0;
     var limit = 25;
     var data;
     var rangeBeg = 1;
@@ -75,7 +75,7 @@
 		name = name.replace("\\", '');
 		var option = new Element('img');
 		option.src = imgTag;
-		if(imgTag == null) option.src = 'noimg.png';
+		if(imgTag == null) option.src = 'http://users.csc.calpoly.edu/~esolum/noimg.png';
 		option.margin = '10px';
 		option.class = 'device-box';
 		option.display = 'inline';
@@ -215,9 +215,13 @@
 	}
 	
 	function createTable(){
-		sqlDB.exec("CREATE TABLE gearbag(deviceName varchar(255), imgURL varchar(255))", function(transaction, result){
-		});
-	}
+		sqlDB.create("CREATE TABLE gearbag(deviceName varchar(255), imgURL varchar(255))", callback.bindWithEvent());
+    }
+
+    //Callback function
+    function callback(transaction,result){
+       
+    }
 	
 	function dbInsert(device){
 		device.inject('myDevices');
@@ -268,14 +272,6 @@
 
 /*
 	Create the table that will store all the devices
-	Add each device to the table
-	
-	Implement Drag and Drop
-	Add a search element
-	Add hover events to say name of device on a bar above devices
-		Fire mouseenter and mouseleave to remove injection of name 
-	
-
 */
 
 
