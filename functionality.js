@@ -252,7 +252,7 @@
   			element.removeChild(element.lastChild);
   		}
 	}
-}
+} 
 
 
 
